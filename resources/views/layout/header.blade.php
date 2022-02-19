@@ -1,5 +1,5 @@
-<body >
-{{--<div id="App">--}}
+<body @if($setari->style_admin == '3') class="dark-only" @elseif($setari->style_admin == '2') class="dark-sidebar" @else class="dark-sidebar" @endif>
+
 <div class="loader-wrapper">
     <div class="loader-index"><span></span>
     </div>
@@ -15,7 +15,6 @@
 <div class="tap-top">
     <i data-feather="chevrons-up"></i>
 </div>
-
 <div class="page-wrapper horizontal-wrapper enterprice-type advance-layout"  id="pageWrapper">
 
     <div class="page-header">
@@ -59,7 +58,7 @@
                     </li>
 
                     <li class="level-menu outside">
-                        <a  class="nav-link" href="users"  style="background-color:
+                        <a  class="nav-link" href="{{ route('users') }}"  style="background-color:
 
     #e9c8fd">
                             <i data-feather="users"></i><span>Clienti </span></a>
@@ -84,8 +83,8 @@
                             <div class="current_lang">
 
                                 <div class="lang">
-{{--                                    <i   class="flag-icon flag-icon-{{  $lang->presc }}"></i>--}}
-{{--                                    <span  class="lang-txt">{{ strtoupper($lang->presc) }}</span>--}}
+                                    <i   class="flag-icon flag-icon-{{  $lang->presc }}"></i>
+                                    <span  class="lang-txt">{{ strtoupper($lang->presc) }}</span>
 
                                 </div>
 
@@ -93,33 +92,31 @@
 
                             <div class="more_lang">
 
-{{--                                <div class="lang selected"   data-value="{{  $lang->presc }}">--}}
+                                <div class="lang selected"   data-value="{{  $lang->presc }}">
 
-{{--                                    <a href='<?//= $classurl->url[2] ?>?id_lang=1'--}}
+                                    <a href='?id_lang=1' style='color:#000;width:140px;'>
 
-{{--                                       style='color:#000;width:140px;'>--}}
+                                        <i  class="flag-icon flag-icon-{{  $lang->presc }}"></i>
 
-                                        <i  class="flag-icon flag-icon-<?//= $classlang->presclang ?>"></i>
-
-                                        <span class="lang-txt"><?//= $classlang->lang ?><span> (x<?//= strtoupper($classlang->presclang) ?>)
+                                        <span class="lang-txt">{{  $lang->lang }}<span> ({{  $lang->limba }})
 
                               </span></span></a>
 
                                 </div>
 
+                                @foreach($langs as $lg)
+                                <div class="lang"  data-value="{{  $lg->presc }}">
 
-                                <div class="lang"    data-value="<?//= $r['presc'] ?>">
+                                    <a  href='?id_lang={{  $lg->id }}' style='color:#000; letter-spacing:0px;'>
 
-                                    <a  href='<?//= $classurl->url[2] ?>?id_lang=<?//= $r['id'] ?>' style='color:#000; letter-spacing:0px;'>
+                                        <i   class="flag-icon flag-icon-{{  $lg->presc }}"></i>
 
-                                        <i   class="flag-icon flag-icon-<?//= $r['presc'] ?>"></i>
-
-                                        <span    class="lang-txt"><?//= $r['limba'] ?><span> (<?//= strtoupper($r['presc']) ?>)
+                                        <span    class="lang-txt">{{  $lg->limba }}<span> ({{  $lg->presc }})
 
                               </span></span></a>
 
                                 </div>
-
+                                @endforeach
 
 
                             </div>
@@ -129,7 +126,7 @@
                     @endif
 
 
-                  <?php //if ($classsetari->setari['site'] == 'magazin'): ?>
+                        @if ( $setari->site =='magazin' )
 
                     <li class="cart-nav onhover-dropdown">
 
@@ -176,9 +173,8 @@
 
                           <? //} ?>
 
-                            <li><a   class="btn btn-block w-100 mb-2 btn-primary view-cart"
-
-                                        href="orders.php">Vezi comenzile</a></li>
+                            <li>
+                                <a   class="btn btn-block w-100 mb-2 btn-primary view-cart"  href="orders">Vezi comenzile</a></li>
 
                         </ul>
 
@@ -200,38 +196,26 @@
 
                                 <h6 class="f-18 mb-0">Review-uri noi</h6></li>
 
-
-
                         </ul>
 
                     </li>
 
-                  <?//php endif ?>
+                  @endif
 
 
 
                     <li>
-
                         <div class="mode"><i class="fa fa-moon-o"></i>
-
                         </div>
-
                     </li>
 
                     <li class="maximize">
                         <a class="text-dark"   href="#!"    onclick="javascript:toggleFullScreen()">
-
                             <i data-feather="maximize"></i></a></li>
-
                     <li class="profile-nav onhover-dropdown p-0 me-0">
-
                         <div class="media profile-media">
 
-                            <img class="b-r-10"
-
-                                 src="{{ asset('assets/images/user/'.$setari->avatar ) }}"
-
-                                 width="40px">
+                            <img class="b-r-10"  src="{{ asset('assets/images/user/'.$setari->avatar ) }}"  width="40px">
 
                             <div class="media-body">
 
@@ -245,11 +229,11 @@
 
                         <ul class="profile-dropdown onhover-show-div">
 
-                            <li><a href="seting_cont.php">
+                            <li><a href="seting_cont">
                                     <i data-feather="settings"></i><span>Settings</span></a>
                             </li>
 
-                            <li><a href="logout.php?logout=da">
+                            <li><a href="logout">
                                     <i data-feather="log-out"> </i><span>Log  out</span></a>
                             </li>
 

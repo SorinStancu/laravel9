@@ -1,9 +1,14 @@
 @extends('layout.master')
+@section('cssdif')
+    <link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"' type="text/css" href="{{ asset('assets/css/vendors/select2.css') }}">
 
+    <link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"' type="text/css" href="{{ asset('assets/css/vendors/owlcarousel.css') }}">
+
+    <link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"' type="text/css" href="{{ asset('assets/css/vendors/range-slider.css') }}">
+
+@endsection
 @section('content')
 
-{{--        @livewire('click')--}}
-{{--        <livewire:show-hide-component >--}}
 
     <div class="container-fluid">
         <div class="row">
@@ -16,55 +21,46 @@
 
                         <div class="col-md-6 ">
 
-                            <H5><?php //if($classsetari->setari['multilingv'] == 'da'): ?>
+                            <H5>@if ( $setari->multilingv =='da' )
 
-                                <div class='nav-right col-6 pull-right right-header p-0' style='float:left;
+                                    <div class='nav-right col-6 pull-right right-header p-0' style='float:left; width:50px;'>
 
-                                width:50px;' >
+                                        <ul class='nav-menus'>
 
-                                    <ul class='nav-menus'>
+                                            <li class='language-nav'>
 
-                                        <li class='language-nav'>
+                                                <div class='translate_wrapper'>
 
-                                            <div class='translate_wrapper'>
+                                                    <div class='lang'>
 
-                                                <div class='lang'>
+                                                        <i class='flag-icon flag-icon-{{ $lang->presc }}'></i>
 
-                                                    <i class='flag-icon flag-icon-<?//= $classlang->presclang ?>'></i>
+                                                    </div>
 
                                                 </div>
 
-                                            </div>
+                                            </li>
 
-                                        </li>
+                                        </ul>
 
-                                    </ul>
+                                    </div>
+                                @endif
 
-                                </div>
-
-															<?php //endif ?>
                                 Produse
 
                             </H5>
 
                             <ul class="nav nav-tabs border-tab">
 
-                                <li class="nav-item" style="margin-top:7px;">Nr. produse: <? /*$classproduse->produse();
-        echo number_format($classproduse->nrproduse, 0);*/ ?> &nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;
+                                <li class="nav-item" style="margin-top:7px;">Nr. produse: {{--{{ number_format(count($produse)) }}--}} &nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;
 
                                 </li>
 
-                                <li class="nav-item" style="margin-top:7px;">Nr. produse
-
-                                    active: <? /*$classproduse->produse("", "da");
-        echo number_format($classproduse->nrproduse, 0);*/ ?> &nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;
+                                <li class="nav-item" style="margin-top:7px;">Nr. produse active: &nbsp;&nbsp;<strong>|</strong>&nbsp;&nbsp;
 
                                 </li>
 
-                                <li class="nav-item" style="margin-top:7px;">Nr. produse
-
-                                    inactive: <? /*$classproduse->produse("", "nu");
-        echo number_format($classproduse->nrproduse, 0);*/ ?></li>
+                                <li class="nav-item" style="margin-top:7px;">Nr. produse inactive:</li>
 
                             </ul>
 
@@ -74,17 +70,8 @@
 
                             <div class="form-group mb-0 me-0"></div>
 
-                            <button class="btn btn-primary-gradien" type="button" name="add" value="add"
-
-                                    onclick="javascript:location.href='add_products.php'" data-bs-toggle="tooltip"
-
-                                    data-bs-placement="top" title="Adauga produs" data-bs-original-title=""
-                            ><i
-
-                                        data-feather="plus"
-                                ></i> Adauga
-
-                            </button>
+                            <a href="add_prod" class="btn btn-primary-gradien"  name="add"  >
+                                <i data-feather="plus"></i> Adauga</a>
 
                         </div>
 
@@ -92,6 +79,15 @@
 
                 </div>
 
+            </div>
+            <div class="text-center">
+                <ul class="nav nav-tabs search-list" id="top-tab" role="tablist">
+
+                    <li class="nav-item"><a class="nav-link active" id="all-link" data-bs-toggle="tab" href="#all-links" role="tab" aria-selected="true" data-bs-original-title="" title=""><i class="icon-target"></i>All</a></li>
+
+                    <li class="nav-item"><a class="nav-link" id="image-link" data-bs-toggle="tab" href="#image-links" role="tab" aria-selected="false" data-bs-original-title="" title=""><i class="icon-image"></i>Grid</a></li>
+
+                </ul>
             </div>
 
             <div class="container-fluid product-wrapper">
@@ -451,7 +447,7 @@
 
                                                         <div class="checkbox-animated mt-0" style="height: 500px; overflow: scroll;">
 
-																													<? /*$sql = "select p.id_prod, m.nume from `products` as p, `manufacturers` as m where p.id_prod=m.id && p.activ='da' group by p.id_prod order by m.nume asc ";
+                                                          <? /*$sql = "select p.id_prod, m.nume from `products` as p, `manufacturers` as m where p.id_prod=m.id && p.activ='da' group by p.id_prod order by m.nume asc ";
               foreach($pdo->query($sql) as $r){*/ ?>
 
                                                             <label class="d-block" for="<? //= $r['id_prod'] ?>">
@@ -469,20 +465,17 @@
                                                                         data-bs-original-title=""
                                                                 >
 
-																															<? //= $r['nume'] ?>
+                                                              <? //= $r['nume'] ?>
                                                                 <span style="float: right;
 
 
 
                                                                     margin-right: 5px;"
-                                                                >[<?/*= $classutile->nr
-                (
-                        'products', "`id_prod`='" . $r['id_prod'] . "'"
-                ); */?>]</span>
+                                                                >[]</span>
 
                                                             </label>
 
-																													<? //} ?>
+                                                          <? //} ?>
 
                                                         </div>
 
@@ -534,77 +527,9 @@
 
                         <div class="row">
 
-													<?
-													/*if(!$_GET['qcod'] && !$_GET['q']){
-
-                                                     $ww = "`idc` != '' && `id_lang`='" . $_SESSION['id_lang'] . "'";
-                                                    }
-                                                    if($_GET['promo'] == 'promo') $ww .= "&& promo='da'";
-                                                    if($_GET['promo'] == 'noi') $ww .= "&& nou='da'";
-                                                    if($_GET['promo'] == 'bara') $ww .= "&& barapromo='da'";
-                                                    if($_GET['tip']) $ww .= " && " . $_GET['tip'] . " = 'da'";
-                                                    if($_GET['idc']) $ww .= " && idc LIKE '%" . trim($_GET['idc']) . "%'";
-                                                    if($_GET['qcod']) $ww .= "  cod = '" . trim($_GET['qcod']) . "'";
-                                                    elseif($_GET['q']) $ww .= " denumire LIKE '%" . trim($_GET['q']) . "%'";
-                                                    if($_GET['brand']) $ww .= " &&  `id_prod` = '" . trim($_GET['brand']) . "'";
-                                                    if($_GET['active']) $ww .= " &&  `activ` = '" . trim($_GET['active']) . "'";
-                                                    if($_GET['q']){
-
-                                                     $ww = " ( `denumire` like '%" . trim($_GET['q']) . "%' || `cod` like '%" . trim($_GET['q']) . "%')";
-                                                    }
-                                                    if($_GET['promo'] == 'bara'){
-
-                                                     $order = "poz_barapromo ASC";
-                                                    }
-                                                    elseif($_GET['poz']){
-
-                                                     $order = "poz ASC";
-                                                    }
-                                                    elseif($_GET['noi']){
-
-                                                     $order = "id DESC";
-                                                    }
-                                                    elseif($_GET['modif']){
-
-                                                     $order = "modif DESC";
-                                                    }
-                                                    elseif($_GET['pret']){
-
-                                                     $order = "pret ASC";
-                                                    }
-                                                    else{
-
-                                                     $order = "id DESC";
-                                                    }
-                                                    if($_GET['promo']){
-
-                                                     $classutile->paginatie("products.php?promo=" . $_GET['promo'] . "&pag=", 'products', $ww, 50);
-                                                    }
-                                                    else{
-
-                                                     $classutile->paginatie("products.php?q=" . $_GET['q'] . "&tip=" . $_GET['tip'] . "&idc=" . $_GET['idc'] . "&pag=", 'products', $ww, 50);
-                                                    }
-                                                    $nr = '1';
-                                                    $nrrez = $pdo->query("SELECT COUNT(*) FROM `products` WHERE $ww  " . $classutile->limit)->fetchColumn();
-                                                    if($_GET['promo'] == 'bara'){
-
-                                                     $nrpoz = $pdo->query("SELECT MAX(`poz_barapromo`) as `maxb` FROM `products` WHERE `activ`='da' && `id_lang`='" . $_SESSION['id_lang'] . "' && `barapromo`='da' ")->fetch();
-                                                     $pozitie = $classquery->nr('products', "`activ`='da' && `id_lang`='" . $_SESSION['id_lang'] . "' && `barapromo`='da' ");
-                                                    }
-                                                    else{
-
-                                                     $nrpoz = $pdo->query("SELECT MAX(poz) as max FROM products WHERE activ='da' && id_lang='" . $_SESSION['id_lang'] . "'")->fetch();
-                                                     $pozitie = $nrpoz['max'] + 1;
-                                                    }
-                                                    ($pozitie > 100) ? $pozitie = '100' : '';
-
-                                                    if($nrrez || $_GET['pag']){
-
-                                                    $q = "SELECT * FROM `products` WHERE $ww ORDER BY $order " . $classutile->limit;
-                                                    foreach($pdo->query($q) as $r){*/
-													?>
                             @foreach ($produse as $produs)
-                                <div class="col-xl-3 col-sm-6 xl-4 wow animated bounceInDown"  >
+                                {{--                                @foreach ($produs as $p)--}}
+                                <div class="col-xl-3 col-sm-6 xl-4 wow animated bounceInDown">
 
                                     <div class="card">
 
@@ -614,11 +539,9 @@
 
                                                 <img class="img-fluid"
 
-                                                        src="http://www.westbuy.ro/files/products/{{ $produs->img }}"
+                                                        src="https://www.westbuy.ro/files/products/{{ $produs->img }}"
 
                                                         height="150"
-
-                                                        onclick="window.location.href = 'edit_products.php?id=<? //= $r['id'] ?>';"
                                                 />
 
                                                 <div class="product-hover">
@@ -631,7 +554,8 @@
 
                                                                     data-bs-toggle="modal"
 
-                                                                    data-bs-target="#exampleModalCenter" >
+                                                                    data-bs-target="#exampleModalCenter"
+                                                            >
 
                                                                 <i class="icofont icofont-eye"></i>
 
@@ -641,14 +565,8 @@
 
                                                         <li>
 
-                                                            <button class="btn" type="button"
-
-                                                                    data-bs-toggle="modal"
-
-                                                                    data-bs-target="#exampleModalCenter">
-
-                                                                <i class="icofont icofont-pencil-alt-5"></i>
-
+                                                            <button class="btn" type="button" data-bs-toggle="modal">
+                                                                <i class="icofont icofont-pencil-alt-5" href="edit_products/{{ $produs->id }}"></i>
                                                             </button>
 
                                                         </li>
@@ -659,7 +577,8 @@
 
                                                                     data-bs-toggle="modal"
 
-                                                                    data-bs-target="#exampleModalCenter">
+                                                                    data-bs-target="#exampleModalCenter"
+                                                            >
 
                                                                 <i class="icofont icofont icofont-ui-delete"></i>
 
@@ -677,14 +596,14 @@
 
                                                 <a href="edit_products.php?id=<? //= $r['id'] ?>">
                                                     {{ $produs->denumire }}
-																									<? //= substr($r['denumire'], 0, 40) . '...' ?></a>
+                                                  <? //= substr($r['denumire'], 0, 40) . '...' ?></a>
 
                                             </h6>
 
-																					<? //if($classsetari->setari['site'] == 'magazin'){ ?>
+                                          <? //if($classsetari->setari['site'] == 'magazin'){ ?>
 
                                             <H6 style="float:left;">Brand:
-                                            {{ $produs->manufacturers->nume }}
+                                                {{ $produs->manufacturers->nume }}
                                             </H6>
                                             <div class="product-price" style="float:right;
 
@@ -701,14 +620,14 @@
 
                                             </div>
 
-																					<? //} ?>
+                                          <? //} ?>
 
                                             <BR clear="all">
 
-																					<? //= ($r['activ'] == 'nu') ? '<span style="color:#BF0101;margin-right:10px;"><strong>Inactiv</strong></span>' : '' ?>
+                                          <? //= ($r['activ'] == 'nu') ? '<span style="color:#BF0101;margin-right:10px;"><strong>Inactiv</strong></span>' : '' ?>
 
 
-																					<? //if ($_SESSION['acces'] == 'admin' || preg_match("/modificare/", $_SESSION['Produse'])) { ?>
+                                          <? //if ($_SESSION['acces'] == 'admin' || preg_match("/modificare/", $_SESSION['Produse'])) { ?>
 
                                             Pozitie:
 
@@ -732,23 +651,23 @@
                  } */?>='+this.options[this.selectedIndex].value"
                                             >
 
-																							<? //if($_GET['promo']){ ?>
+                                              <? //if($_GET['promo']){ ?>
 
-																							<? //for($i = 0; $i <= $pozitie; $i++){ ?>
+                                              <? //for($i = 0; $i <= $pozitie; $i++){ ?>
 
                                                 <option value="<? //= $i ?>"<? //= ($r['poz_barapromo'] == $i) ? ' selected="selected"' : '' ?>><? //= $i ?></option>
 
-																							<? /*}
+                                              <? /*}
           }
           else{
 
           for($i = 0; $i <= $pozitie; $i++){*/
 
-																							?>
+                                              ?>
 
                                                 <option value="<? //= $i ?>"<? //= ($r['poz'] == $i) ? ' selected="selected"' : '' ?>><? //= $i ?></option>
 
-																							<? //}          } ?>
+                                              <? //}          } ?>
 
                                             </select><? //} ?>
 
@@ -758,7 +677,7 @@
 
 
 
-																					<? //if($_SESSION['acces'] == 'admin' || preg_match("/stergere/", $_SESSION['Produse'])){ ?>
+                                          <? //if($_SESSION['acces'] == 'admin' || preg_match("/stergere/", $_SESSION['Produse'])){ ?>
 
                                             <a href="edit_products.php?id=<? //= $r['id'] ?>"><span
 
@@ -770,7 +689,7 @@
                   } */?>"
                                                 >Edit</span></a>
 
-																					<? //if(!$_GET['promo']){ ?>
+                                          <? //if(!$_GET['promo']){ ?>
 
                                             <a href="products.php?id=<? //= $r['id'] ?>&sterge=ok&pag=<? //= $_GET['pag'] ?>&poza=<? //= $r['img'] ?>"
 
@@ -793,7 +712,7 @@
                                             </a><? //}          } ?>
 
                                             <div style="margin-top: 5px;">
-																							<? //if(!$_GET['promo']){ ?>
+                                              <? //if(!$_GET['promo']){ ?>
                                                 <form method="post">
 
                                                     <input type="hidden" name="id" value="<? //= $r['id'] ?>">
@@ -811,7 +730,7 @@
 
                                                 </form>
 
-																							<? //} ?>
+                                              <? //} ?>
 
                                             </div>
 
@@ -820,12 +739,13 @@
                                     </div>
 
                                 </div>
-                         @endforeach
+                            @endforeach
+                            {{--                         @endforeach--}}
 
                             <br clear="all">
-{{--                                                        <div >--}}
-{{--                                                            {{ $produs->paginate() }}--}}
-{{--                                                           </div>--}}
+                            {{--                                                        <div >--}}
+                            {{--                                                            {{ $produs->paginate() }}--}}
+                            {{--                                                           </div>--}}
 
                         </div>
 

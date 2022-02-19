@@ -56,37 +56,9 @@
 <link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'
         type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
-
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'--}}
-{{--        type="text/css" href="{{ asset('assets/css/vendors/select2.css') }}">--}}
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'
-        type="text/css" href="{{ asset('assets/css/vendors/owlcarousel.css') }}">--}}
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'--}}
-{{--        type="text/css" href="{{ asset('assets/css/vendors/range-slider.css') }}">--}}
-
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'--}}
-{{--        type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">--}}
-
 <link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'
         type="text/css" href="{{ asset('assets/css/vendors/photoswipe.css') }}">
 
-
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'--}}
-{{--        type="text/css" href="{{ asset('assets/css/vendors/prism.css') }}">--}}
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'--}}
-{{--        type="text/css" href="{{ asset('assets/css/vendors/daterange-picker.css') }}">--}}
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'--}}
-{{--        type="text/css" href="{{ asset('assets/css/vendors/jkanban.css') }}">--}}
-
-{{--<link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'--}}
-{{--        type="text/css" href="{{ asset('assets/css/vendors/sweetalert2.css') }}">--}}
 @yield('cssdif')
 <noscript>
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
@@ -123,29 +95,9 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
-
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/select2.css') }}">--}}
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/owlcarousel.css') }}">--}}
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/range-slider.css') }}">--}}
-
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/animate.css') }}">
 
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/photoswipe.css') }}">
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/owlcarousel.css') }}">--}}
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/prism.css') }}">--}}
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/daterange-picker.css') }}">--}}
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/jkanban.css') }}">--}}
-
-{{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/sweetalert2.css') }}">--}}
     @yield('cssdifno')
 </noscript>
 @livewireStyles
-{{--<script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>--}}
-{{--<script src='https://unpkg.com/axios/dist/axios.min.js'></script>--}}

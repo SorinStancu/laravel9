@@ -4,7 +4,9 @@
 
         <div class="logo-wrapper">
 
-            <a href="home"> <img class="img-fluid for-light" src="{{ asset('assets/images/logo/logo.png') }}" alt="logo"> <img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logo_dark.png') }}" alt="logo"></a>
+            <a href="{{ route('home') }}">
+                <img class="img-fluid for-light" src="{{ asset('assets/images/logo/logo.png') }}" alt="logo">
+                <img class="img-fluid for-dark" src="{{ asset('assets/images/logo/logo_dark.png') }}" alt="logo"></a>
             <div class="back-btn">
 
                 <i class="fa fa-angle-left"></i>
@@ -21,7 +23,8 @@
 
         <div class="logo-icon-wrapper">
 
-            <a href="home"><img class="img-fluid" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="icon"></a>
+            <a href="{{ route('home') }}">
+                <img class="img-fluid" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="icon"></a>
 
         </div>
 
@@ -38,7 +41,8 @@
                 <ul class="sidebar-links" id="simple-bar">
 
                     <li class="back-btn">
-                        <a href="home"><img class="img-fluid" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="logo icon"></a>
+                        <a href="{{ route('home') }}">
+                            <img class="img-fluid" src="{{ asset('assets/images/logo/logo-icon.png') }}" alt="logo icon"></a>
 
                         <div class="mobile-back text-end">
 
@@ -46,7 +50,7 @@
                         </div>
                     </li>
 
-									<? //if ($classsetari->setari['site'] == 'magazin') { ?>
+                    @if ( $setari->site =='magazin' )
 
                     <li class="sidebar-main-title">
 
@@ -61,17 +65,18 @@
                     </li>
 
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="#"><i data-feather="shopping-bag"></i><span>Comenzi</span></a>
+                        <a class="sidebar-link sidebar-title" href="#"><i data-feather="shopping-bag"></i>
+                            <span>Comenzi</span></a>
 
                         <ul class="sidebar-submenu">
 
-                            <li class="<?//= ($_SESSION['submeniu'] == 'comenzi_noi') ? 'active' : '' ?>">
-                                <a href="orders?vezistatus=noi">Comenzi noi</a></li>
+                            <li>
+                                <a href="{{ route('orders') }}">Comenzi noi</a></li>
 
-                            <li class="<?//= ($_SESSION['submeniu'] == 'comenzi') ? 'active' : '' ?>">
-                                <a href="orders.php?vezistatus=toate">Toate comenzile</a></li>
+                            <li>
+                                <a href="{{ route('orders') }}">Toate comenzile</a></li>
 
-                            <li class="<?//= ($_SESSION['submeniu'] == 'statusc') ? 'active' : '' ?>">
+                            <li>
                                 <a href="status_com.php">Statusuri</a></li>
 
                         </ul>
@@ -82,8 +87,8 @@
 
                         <ul class="sidebar-submenu">
 
-                            <li class="<?//= ($_SESSION['submeniu'] == 'produse') ? 'active' : '' ?>">
-                                <a href="products">Produse</a></li>
+                            <li class="active">
+                                <a href="{{ route('produse') }}">Produse</a></li>
 
                             <li class="<?//= ($_SESSION['submeniu'] == 'categorii') ? 'active' : '' ?>">
                                 <a href="categories">Categorii</a></li>
@@ -125,7 +130,7 @@
                         </ul>
                     </li>
 
-									<? //} ?>
+					@endif
 
                     <li class="sidebar-main-title">
 
@@ -142,63 +147,58 @@
                     <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title" href="#"> <i data-feather="file-text"></i><span>Pagini</span></a>
                         <ul class="sidebar-submenu">
+                            <li>
+                                <a href="{{ route('add_pag') }}"><strong>Adauga pagini</strong></a>
+                            </li>
                             @foreach ($pagini as $pagina)
-                                <li class="<?//= ($_SESSION['submeniu'] == $row['name']) ? 'active' : '' ?>">
+                                <li style="margin-left: 15px;">
                                     <a href="{{$pagina->link}}">{{$pagina->name}}</a>
                                 </li>
                             @endforeach
                         </ul>
                     </li>
 
-									<? //if ($classsetari->setari['site'] == 'prezentare') { ?>
-
-                    <li class="sidebar-list <?//= ($_SESSION['submeniu'] == 'bannere') ? 'active' : '' ?>">
-                        <a class="sidebar-link sidebar-title link-nav " href="bannere"><i data-feather="image"> </i><span>bannere</span></a>
-                    </li>
-
-									<? //if ($classsetari->setari['galerie'] == 'da') { ?>
 
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav <?//= ($_SESSION['submeniu'] == 'galerie foto') ? 'active' : '' ?>"
+                        <a class="sidebar-link sidebar-title link-nav " href="{{ route('bannere') }}">
+                            <i data-feather="image"> </i><span>bannere</span></a>
+                    </li>
 
-                                href="galeriefoto"
+                    @if ( $setari->galerie =='da' )
+
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav"
+
+                                href="{{ route('galeriefoto') }}"
                         ><i data-feather="camera"> </i><span>Galerie foto</span></a>
                     </li>
-
-									<? //if ($classsetari->setari['news'] == 'da') { ?>
+                         @endif
+                    @if ( $setari->news =='da' )
 
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav <?//= ($_SESSION['submeniu'] == 'stiri') ? 'active' : '' ?>"
-
-                                href="news"
+                        <a class="sidebar-link sidebar-title link-nav"  href="{{ route('news') }}"
                         ><i data-feather='refresh-ccw'></i> </i><span>Stiri</span></a>
                     </li>
-
-									<? //} } } ?>
-
-									<? //if ($classsetari->setari['blog'] == 'da') { ?>
+                    @endif
+                    @if ( $setari->blog =='da' )
 
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="#"><i data-feather="list"></i><span>Blog</span></a>
-
+                        <a class="sidebar-link sidebar-title" href="#">
+                            <i data-feather="list"></i><span>Blog</span></a>
                         <ul class="sidebar-submenu">
-
-                            <li class="<?//= ($_SESSION['submeniu'] == 'categorii_blog') ? 'active' : '' ?>">
-                                <a class="sidebar-link sidebar-title link-nav" href="categoriesblog"><span>Categorii</span></a>
+                            <li class="">
+                                <a class="sidebar-link sidebar-title link-nav" href="{{ route('catblog') }}">
+                                    <span>Categorii</span></a>
                             </li>
-
-                            <li class="<?//= ($_SESSION['submeniu'] == 'articole_blog') ? 'active' : '' ?>">
-                                <a class="sidebar-link sidebar-title link-nav" href="newsblog"><span>Articole</span></a>
+                            <li class="">
+                                <a class="sidebar-link sidebar-title link-nav" href="{{ route('artblog') }}"><span>Articole</span></a>
                             </li>
-
-                            <li class="<?//= ($_SESSION['submeniu'] == 'comentarii_blog') ? 'active' : '' ?>">
-                                <a class="sidebar-link sidebar-title link-nav" href="reviewblog"><span>Comentarii</span></a>
+                            <li class="">
+                                <a class="sidebar-link sidebar-title link-nav" href="{{ route('comblog') }}"><span>Comentarii</span></a>
                             </li>
-
                         </ul>
                     </li>
-
-									<? //} ?>
+                    @endif
 
                     <li class="sidebar-main-title">
                         <div>
@@ -209,22 +209,22 @@
                     </li>
 
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title" href="#"><i data-feather="users"> </i><span>Setari</span></a>
+                        <a class="sidebar-link sidebar-title" href="#">
+                            <i data-feather="{{ route('setari') }}"> </i><span>Setari</span></a>
 
                         <ul class="sidebar-submenu">
 
-                            <li class="<?//= ($_SESSION['submeniu'] == 'useri') ? 'active' : '' ?>">
-                                <a class="sidebar-link sidebar-title link-nav" href="useri"><span>Useri</span></a>
+                            <li class="">
+                                <a class="sidebar-link sidebar-title link-nav" href="{{ route('useri') }}"><span>Useri</span></a>
                             </li>
 
-                            <li class="<?//= ($_SESSION['submeniu'] == 'mentenanta') ? 'active' : '' ?>">
-                                <a class="sidebar-link sidebar-title link-nav" href="mentenanta"><span>Mentenanta</span></a>
+                            <li class="">
+                                <a class="sidebar-link sidebar-title link-nav" href="{{ route('mentenanta') }}"><span>Mentenanta</span></a>
                             </li>
 
-                            <li class="<?//= ($_SESSION['submeniu'] == 'site') ? 'active' : '' ?>">
-                                <a class="sidebar-link sidebar-title link-nav" href="bk"><span>Site</span></a></li>
-
-
+{{--                            <li class="">--}}
+{{--                                <a class="sidebar-link sidebar-title link-nav" href="bk">--}}
+{{--                                    <span>Site</span></a></li>--}}
                         </ul>
                     </li>
 

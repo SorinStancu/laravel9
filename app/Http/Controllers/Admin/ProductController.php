@@ -7,13 +7,20 @@ use Livewire\WithPagination;
 
 class ProductController extends Controller
 {
-	use WithPagination;
-	protected $paginationTheme = 'bootstrap';
+  public function index() {
+    $products = Product::with('manufacturers')->limit(10)->get()->toArray();
+    return array_reverse($products);
+  }
 	public function produse()
 		{
 			$produse= Product::with('manufacturers')->limit(100)->get()->paginate(20);
-//        dd($produse);
 			return view('admin.products', ['produse' => $produse]);
-			
+
 		}
+  public function add_prod()
+    {
+
+      return view('admin.add_prod');
+
+    }
 }
