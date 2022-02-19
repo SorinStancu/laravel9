@@ -11,7 +11,7 @@ class OrderController extends Controller
 
 	public function comenzi()
 		{
-			
+
 			$order =
 				order::where('idu', '>','0' )
 				->with('cos')
@@ -25,11 +25,11 @@ class OrderController extends Controller
 				->get()
 				->paginate(50)
 				->groupby('data');
-			
+
 			 $statusuri = Status::all()
 				 ->where('tip','com');
 
-//		 dd($order->toArray());
+//		 dd($statusuri);
 			return view('admin.orders', compact('order', 'statusuri'));
 		}
 }
