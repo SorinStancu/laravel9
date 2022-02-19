@@ -12,7 +12,6 @@ class BannerController extends Controller
 
 	public function bannere()
 		{
-      Cache::forget('bannere');
       $out = Cache::rememberForever('bannere',  function () {
         $langcurrent = Cache::get('lang');
         return Banner::where('id_lang',$langcurrent->id)->get()->paginate(20);
