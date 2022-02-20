@@ -65,7 +65,7 @@
 
                                     <button data-bs-target="#nume{{ $comanda->id }}" type="button" data-bs-toggle="modal" data-bs-original-title="" title="Vezi detalii comanda" style="padding: 10px;color:#D18AFC; border: none;  ">
                                         <i class="fa fa-user"></i>
-                                            {{ ucwords(strtolower($comanda->users['nume'])) }}
+{{--                                            {{ ucwords(strtolower($comanda->users['nume'])) }}--}}
                                     </button>
                                     <div class="modal fade" id="nume{{ $comanda->id }}" tabindex="-1" aria-labelledby="nume" style="display: none;" aria-hidden="true">
 
@@ -75,7 +75,7 @@
 
                                                 <div class="modal-header">
 
-                                                    <h5 class="modal-title">Nume: {{ $comanda->users['nume'] }}</h5>
+                                                    <h5 class="modal-title">Nume: {{--{{ $comanda->users['nume'] }}--}}</h5>
 
                                                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close" data-bs-original-title="" title=""></button>
 
@@ -83,9 +83,9 @@
 
                                                 <div class="modal-body" align="left">
 
-                                                    <p>Telefon: {{ $comanda->users['tel'] }}</p>
+                                                    <p>Telefon: {{--{{ $comanda->users['tel'] }}--}}</p>
 
-                                                    <p>Email: {{ $comanda->users['mail'] }}</p>
+                                                    <p>Email: {{--{{ $comanda->users['mail'] }}--}}</p>
 
                                                     <p>Data inregistrare: <? //= $classdata->schimba_data($user['data']) ?></p>
 
@@ -110,7 +110,7 @@
                                 </td>
 
                                 <td class="jsgrid-cell jsgrid-align-center" style="width: 100px;">
-<span style='-webkit-user-select: all; -moz-user-select: all;  -ms-user-select:user-select: all;'> {{ $comanda->users['tel'] }}</span>
+<span style='-webkit-user-select: all; -moz-user-select: all;  -ms-user-select:user-select: all;'> {{--{{ $comanda->users['tel'] }}--}}</span>
                                 </td>
 
                                 <td class="jsgrid-cell jsgrid-align-center" style="width: 75px;">
@@ -134,12 +134,12 @@
 
                                 <td class="jsgrid-cell jsgrid-align-center" style="width: 80px;">
                                     <select name="id_stare" class="form-select form-control-primary" style="width:170px; padding-top:5px;
-                                      @if ( $comanda->status['id'] === '12' )   color:'#098C28';
-                                    @elseif ( $comanda->status['id'] === '11' )   color:'red';
-                                    @elseif ( $comanda->status['id'] === '5' )   color:'#000';
-                                            @endif
+{{--                                      @if ( $comanda->status['id'] === '12' )   color:'#098C28';--}}
+{{--                                    @elseif ( $comanda->status['id'] === '11' )   color:'red';--}}
+{{--                                    @elseif ( $comanda->status['id'] === '5' )   color:'#000';--}}
+{{--                                            @endif--}}
                                             margin-right:0px;" >
-                                        <option value="">{{ $comanda->status['presc'] }} ({{ $comanda->status['status'] }})</option>
+{{--                                        <option value="">{{ $comanda->status['presc'] }} ({{ $comanda->status['status'] }})</option>--}}
                                         @foreach( $statusuri as $listastatus)
                                             <option value="{{ $listastatus->id }}">{{ $listastatus->presc }} ({{ $listastatus->status }})</option>
                                         @endforeach

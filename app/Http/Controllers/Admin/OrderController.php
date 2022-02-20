@@ -13,7 +13,7 @@ class OrderController extends Controller
 		{
 
 			$order =
-				order::where('idu', '>','0' )
+				Order::where('idu', '>','0' )
 				->with('cos')
 //				->withSum('cos','pret')
 				->with('users')
@@ -26,10 +26,8 @@ class OrderController extends Controller
 				->paginate(50)
 				->groupby('data');
 
-			 $statusuri = Status::all()
-				 ->where('tip','com');
+			 $statusuri = Status::where('tip','com')->get();
 
-//		 dd($statusuri);
 			return view('admin.orders', compact('order', 'statusuri'));
 		}
 }
