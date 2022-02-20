@@ -28,7 +28,6 @@ class OrderController extends Controller
 
 			 $statusuri = Status::where('tip','com')->get();
 
-//		 dd($order);
 			return view('admin.orders', compact('order', 'statusuri'));
 		}
 }
