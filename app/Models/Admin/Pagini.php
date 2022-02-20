@@ -27,11 +27,11 @@ class Pagini extends Model
 		'tip',
 		'text'
 	];
-	/**
-	 * Get the route key for the model.
-	 *
-	 * @return string
-	 */
+  /**
+   * Get the route key for the model.
+   *
+   * @return string
+   */
 	public function getRouteKeyName()
 		{
 			return 'link';

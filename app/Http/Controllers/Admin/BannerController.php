@@ -4,15 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Models\Admin\Banner;
-use Illuminate\Http\Request;
-use Livewire\WithPagination;
+use Illuminate\Support\Facades\Cache;
+
 
 class BannerController extends Controller
 {
-//	use WithPagination;
-//	protected $paginationTheme = 'bootstrap';
+
 	public function bannere()
 		{
-					return view('admin.bannere', ['bannere' =>Banner::all()->paginate(20) ]);
+      $out = Cache::rememberForever('bannere',  function () {
+        $langcurrent = Cache::get('lang');
+        return Banner::where('id_lang',$langcurrent->id)->get()->paginate(20);
+      });
+			return view('admin.bannere', ['bannere' =>$out ]);
 		}
 }

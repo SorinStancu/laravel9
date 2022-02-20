@@ -7,7 +7,8 @@
             type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
     <link rel='preload' data-preload='1' data-minified='1' as='style' onload='this.rel="stylesheet"'
             type="text/css" href="{{ asset('assets/css/vendors/owlcarousel.css') }}">
-
+    <script  src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="//unpkg.com/alpinejs"></script>
 @endsection
 @section('content')
 <div class="container-fluid">
@@ -73,17 +74,19 @@
         </div>
     </div>
 
+{{--     test--}}
+    <div id="appx">
+{{--        {{ test }}--}}
+    </div>
 
  </div>
 
 </div>
 @endsection
 @section('jsdif')
-    <script src="{{ asset('assets/js/product-tab.js') }}" ></script>
+
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}" ></script>
-    <script src="{{ asset('assets/js/rating/jquery.barrating.js') }}" ></script>
-    <script src="{{ asset('assets/js/rating/rating-script.js') }}" ></script>
-    <script src="{{ asset('assets/js/owlcarousel/owl.carousel.js') }}" ></script>
-    <script src="{{ asset('assets/js/ecommerce.js') }}" ></script>
+
     <script src="{{ asset('assets/js/product-list-custom.js') }}" ></script>
+
 @endsection

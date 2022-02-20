@@ -7,13 +7,14 @@ use App\Models\Admin\Language;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
-	
+
     /**
      * Register any application services.
      *
@@ -31,36 +32,44 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
 	    View::composer('*', function ($view) {
-		   
-		   
-//		    $lang = Language::first();
-//		    $langs = Language::all();
-//		    $view->with('langs', $langs );
-//		    $view->with('lang', $lang );
-//		    $view->with('currentLang', $lang);
-//		   session()->put('lang', $lang);
-//				app()->setLocale($lang);
-		   
-			  $setari = DB::table('admin')->first();
-			  $setariuser = DB::table('designadm')->first();
-//		    $setari =array();
-//		    $setariuser =array();
+
+        $lang = Cache::rememberForever('lang',  function () {
+          return Language::first();
+        });
+
+        $langs = Cache::rememberForever('langs',  function () {
+          return Language::all();
+        });
+
+        $setari = Cache::rememberForever('setari',  function () {
+          return DB::table('admin')->first();
+        });
+        $setariuser = Cache::rememberForever('setariuser',  function () {
+          return DB::table('designadm')->first();
+        });
+
 				$setari->avatar = $setariuser->avatar;
 				$setari->post = $setariuser->post;
 				$setari->style_site = $setariuser->style_site;
 				$setari->style_admin = $setariuser->style_admin;
-				
-		    $pagini = Pagini::where('id_lang', '1')
-			    ->where('name','!=','Login')
-			    ->where('name','!=','News')
-			    ->where('name','!=','Samples')
-			    ->where('loc','!=','landing')
-			    ->where('id_lang','1')
-			    ->get();
+
+        $pagini = Cache::rememberForever('pagini',  function () {
+          return  Pagini::where('id_lang', '1')
+            ->where('name','!=','Login')
+            ->where('name','!=','News')
+            ->where('name','!=','Samples')
+            ->where('loc','!=','landing')
+            ->get();
+        });
+
 		    $view->with('pagini', $pagini );
 		    $view->with('setari', $setari );
+        $view->with('langs', $langs );
+        $view->with('lang', $lang );
 	    });
+      Paginator::useBootstrap();
     }
 }
 if (!Collection::hasMacro('paginate')) {

@@ -11,7 +11,7 @@
 
 @endsection
 @section('content')
- @livewire('click-event')
+
 <div class="container-fluid">
  <div class="row">
 
@@ -23,11 +23,9 @@
 
      <div class="col-md-6 ">
 
-      <h5><?php //if ($classsetari->setari['multilingv'] == 'da'): ?>
+      <h5>
 
-       <div class='nav-right col-6 pull-right right-header p-0' style='float:left;
-
-                                width:50px;'>
+       <div class='nav-right col-6 pull-right right-header p-0' style='float:left;width:50px;'>
 
         <ul class='nav-menus'>
 
@@ -49,7 +47,10 @@
 
        </div>
 
-       <?php // endif ?>Bannere
+{{--          {{ test }}--}}
+
+
+       Bannere
 
       </h5>
 
@@ -83,247 +84,251 @@
 
   </div>
 
-  <div class="col-sm-12">
+  <livewire:bannere/>
 
-   <div class="card">
+{{--  <div class="col-sm-12">--}}
 
-    <div class="container-fluid product-wrapper">
+{{--   <div class="card">--}}
 
-     <div class="product-grid">
+{{--    <div class="container-fluid product-wrapper">--}}
 
-      <div class="feature-products">
+{{--     <div class="product-grid">--}}
 
-       <div class="row">
+{{--      <div class="feature-products">--}}
 
-        <div class="col-md-6 products-total">
+{{--       <div class="row">--}}
 
-         <div class="square-product-setting d-inline-block">
+{{--        <div class="col-md-6 products-total">--}}
 
-          <a class="icon-grid grid-layout-view" href="#" data-original-title="" title=""><i data-feather="grid"></i></a>
+{{--         <div class="square-product-setting d-inline-block">--}}
 
-         </div>
+{{--          <a class="icon-grid grid-layout-view" href="#" data-original-title="" title=""><i data-feather="grid"></i></a>--}}
 
-         <div class="square-product-setting d-inline-block">
+{{--         </div>--}}
 
-          <a class="icon-grid m-0 list-layout-view" href="#" data-original-title="" title=""><i data-feather="list"></i></a>
+{{--         <div class="square-product-setting d-inline-block">--}}
 
-         </div>
+{{--          <a class="icon-grid m-0 list-layout-view" href="#" data-original-title="" title=""><i data-feather="list"></i></a>--}}
 
-         <span class="d-none-productlist filter-toggle"> Filters<span class="ms-2"><i class="toggle-data" data-feather="chevron-down"></i></span></span>
+{{--         </div>--}}
 
-         <div class="grid-options d-inline-block">
+{{--         <span class="d-none-productlist filter-toggle"> Filters<span class="ms-2"><i class="toggle-data" data-feather="chevron-down"></i></span></span>--}}
 
-          <ul>
+{{--         <div class="grid-options d-inline-block">--}}
 
-           <li>
+{{--          <ul>--}}
 
-            <a class="product-2-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-1 bg-primary"></span><span class="line-grid line-grid-2 bg-primary"></span></a>
+{{--           <li>--}}
 
-           </li>
+{{--            <a class="product-2-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-1 bg-primary"></span><span class="line-grid line-grid-2 bg-primary"></span></a>--}}
 
-           <li>
+{{--           </li>--}}
 
-            <a class="product-3-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-3 bg-primary"></span><span class="line-grid line-grid-4 bg-primary"></span><span class="line-grid line-grid-5 bg-primary"></span></a>
+{{--           <li>--}}
 
-           </li>
+{{--            <a class="product-3-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-3 bg-primary"></span><span class="line-grid line-grid-4 bg-primary"></span><span class="line-grid line-grid-5 bg-primary"></span></a>--}}
 
-           <li>
+{{--           </li>--}}
 
-            <a class="product-4-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-6 bg-primary"></span><span class="line-grid line-grid-7 bg-primary"></span><span class="line-grid line-grid-8 bg-primary"></span><span class="line-grid line-grid-9 bg-primary"></span></a>
+{{--           <li>--}}
 
-           </li>
+{{--            <a class="product-4-layout-view" href="#" data-original-title="" title=""><span class="line-grid line-grid-6 bg-primary"></span><span class="line-grid line-grid-7 bg-primary"></span><span class="line-grid line-grid-8 bg-primary"></span><span class="line-grid line-grid-9 bg-primary"></span></a>--}}
 
-          </ul>
+{{--           </li>--}}
 
-         </div>
+{{--          </ul>--}}
 
-        </div>
+{{--         </div>--}}
 
-       </div>
+{{--        </div>--}}
 
-      </div>
+{{--       </div>--}}
 
-      <div class="product-wrapper-grid">
+{{--      </div>--}}
 
-       <div class="row">
+{{--      <div class="product-wrapper-grid">--}}
 
-         @foreach ($bannere as $banner)
-        <div class="col-xl-3 col-sm-6 xl-4">
+{{--       <div class="row">--}}
 
-         <div class="card">
+{{--         @foreach ($bannere as $banner)--}}
+{{--        <div class="col-xl-3 col-sm-6 xl-4">--}}
 
-          <div class="product-box ">
+{{--         <div class="card">--}}
 
-           <div class="product-img">
+{{--          <div class="product-box ">--}}
 
-            <img class="img-fluid wow BounceInDown" src="http://www.westbuy.ro/files/banner/{{ $banner->img }}" >
+{{--           <div class="product-img">--}}
 
-            <div class="product-hover">
+{{--            <img class="img-fluid wow BounceInDown" src="https://www.westbuy.ro/files/banner/{{ $banner->img }}" >--}}
 
-             <ul>
+{{--            <div class="product-hover">--}}
 
-              <li>
+{{--             <ul>--}}
 
-               <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" >
+{{--              <li>--}}
 
-                <i class="icofont icofont-pencil-alt-5"></i>
+{{--               <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter" >--}}
 
-               </button>
+{{--                <i class="icofont icofont-pencil-alt-5"></i>--}}
 
-              </li>
+{{--               </button>--}}
 
-              <li>
+{{--              </li>--}}
 
-               <form action="" method="get">
+{{--              <li>--}}
 
-                <button class="btn" type="submit" name="delid" value="">
+{{--               <form action="" method="get">--}}
 
-                 <i class="icofont icofont icofont-ui-delete"></i>
+{{--                <button class="btn" type="submit" name="delid" value="">--}}
 
-                </button>
+{{--                 <i class="icofont icofont icofont-ui-delete"></i>--}}
 
-               </form>
+{{--                </button>--}}
 
-              </li>
+{{--               </form>--}}
 
-             </ul>
+{{--              </li>--}}
 
-            </div>
+{{--             </ul>--}}
 
-           </div>
+{{--            </div>--}}
 
-           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
+{{--           </div>--}}
 
-            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+{{--           <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">--}}
 
-             <div class="modal-content">
+{{--            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">--}}
 
-              <div class="modal-header">
+{{--             <div class="modal-content">--}}
 
-               <div class="product-box row">
+{{--              <div class="modal-header">--}}
 
-                <div class="product-img col-lg-6">
+{{--               <div class="product-box row">--}}
 
-                 <img class="img-fluid" src="http://www.westbuy.ro/files/banner/{{ $banner->img }}" alt="{{$banner->name}}">
+{{--                <div class="product-img col-lg-6">--}}
 
-                </div>
+{{--                 <img class="img-fluid" src="http://www.westbuy.ro/files/banner/{{ $banner->img }}" alt="{{$banner->name}}">--}}
 
-                <div class="product-details col-lg-6 text-start">
+{{--                </div>--}}
 
-                 <div class="product-qnty">
+{{--                <div class="product-details col-lg-6 text-start">--}}
 
-                  <fieldset>
+{{--                 <div class="product-qnty">--}}
 
-                   <div class="input-group">
+{{--                  <fieldset>--}}
 
-                    <input class="touchspin text-center" type="text" value="5">
+{{--                   <div class="input-group">--}}
 
-                   </div>
+{{--                    <input class="touchspin text-center" type="text" value="5">--}}
 
-                  </fieldset>
+{{--                   </div>--}}
 
-                 </div>
+{{--                  </fieldset>--}}
 
-                </div>
+{{--                 </div>--}}
 
-               </div>
+{{--                </div>--}}
 
-              </div>
+{{--               </div>--}}
 
-             </div>
+{{--              </div>--}}
 
-            </div>
+{{--             </div>--}}
 
-           </div>
+{{--            </div>--}}
 
-           <div class="product-details">
+{{--           </div>--}}
 
-            <div class="row">
+{{--           <div class="product-details">--}}
 
-             <div class="col-sm-6">
+{{--            <div class="row">--}}
 
-              <div class="mb-2">
+{{--             <div class="col-sm-6">--}}
 
-               <label>Status:</label><br>
+{{--              <div class="mb-2">--}}
 
-               <form>
+{{--               <label>Status:</label><br>--}}
 
-                <input type='hidden' name='id' value='{{ $banner->id }}'>
+{{--               <form>--}}
 
-                <select name="activ" class="form-select form-control-success" style="width: 100px; " >
+{{--                <input type='hidden' name='id' value='{{ $banner->id }}'>--}}
 
-                 <option value="yes"
-                         @if ( $banner->activ  === 'yes' ) selected="selected"  @endif
-                           > Activ
-                 </option>
+{{--                <select name="activ" class="form-select form-control-success" style="width: 100px; " >--}}
 
-                 <option value="no"
-                         @if ( $banner->activ  === 'no' ) selected="selected"  @endif
-                         >Inactiv
-                 </option>
+{{--                 <option value="yes"--}}
+{{--                         @if ( $banner->activ  === 'yes' ) selected="selected"  @endif--}}
+{{--                           > Activ--}}
+{{--                 </option>--}}
 
-                </select>
+{{--                 <option value="no"--}}
+{{--                         @if ( $banner->activ  === 'no' ) selected="selected"  @endif--}}
+{{--                         >Inactiv--}}
+{{--                 </option>--}}
 
-               </form>
+{{--                </select>--}}
 
-              </div>
+{{--               </form>--}}
 
-             </div>
+{{--              </div>--}}
 
-             <div class="col-sm-6">
+{{--             </div>--}}
 
-              <div class="mb-2" style="float:right;">
+{{--             <div class="col-sm-6">--}}
 
-               <label>Pozitie:</label><br>
+{{--              <div class="mb-2" style="float:right;">--}}
 
-               <select name="poz" class="form-select form-control-primary" style="float: left;">
-                @for ($i = 0; $i < 20; $i++)
-                 <option value="{{ $i }}"
-                         @if ( $banner->poz  === $i ) selected="selected"  @endif
-                 >
-                  {{ $i }}
-                 </option>
-                @endfor
+{{--               <label>Pozitie:</label><br>--}}
 
-               </select>
+{{--               <select name="poz" class="form-select form-control-primary" style="float: left;">--}}
+{{--                @for ($i = 0; $i < 20; $i++)--}}
+{{--                 <option value="{{ $i }}"--}}
+{{--                         @if ( $banner->poz  === $i ) selected="selected"  @endif--}}
+{{--                 >--}}
+{{--                  {{ $i }}--}}
+{{--                 </option>--}}
+{{--                @endfor--}}
 
-              </div>
+{{--               </select>--}}
 
-             </div>
+{{--              </div>--}}
 
-            </div>
+{{--             </div>--}}
 
-           </div>
+{{--            </div>--}}
 
-          </div>
+{{--           </div>--}}
 
-         </div>
+{{--          </div>--}}
 
-        </div>
+{{--         </div>--}}
 
-         @endforeach
-{{--        <div class="card-body">--}}
-{{--         <div class="d-flex justify-content-center">--}}
-{{--          {{ $bannere->paginate() }}--}}
-{{--         </div></div>--}}
-{{--          {{ $bannere->paginate() }}--}}
-       </div>
+{{--        </div>--}}
 
-      </div>
+{{--        @endforeach--}}
 
-     </div>
+{{--          <div class="d-flex">--}}
+{{--           <div class="mx-auto">--}}
+{{--            {{ $bannere->paginate() }}--}}
+{{--           </div>--}}
+{{--          </div>--}}
 
-    </div>
+{{--       </div>--}}
 
-   </div>
+{{--      </div>--}}
 
-  </div>
+{{--     </div>--}}
+
+{{--    </div>--}}
+
+{{--   </div>--}}
+
+{{--  </div>--}}
 
  </div>
 
  </div>
 
-</livewire:click-event>
+
 @endsection
 @section('jsdif')
  <script src="{{ asset('assets/js/product-tab.js') }}" defer></script>
