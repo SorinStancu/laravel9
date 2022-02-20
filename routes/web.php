@@ -119,7 +119,7 @@
 //    ->where('any', '.*');
 
   Route::get('{any}', function () {
-    return view('layout.app');
+    return view('dashboard');
   })->where('any', '.*');
 
 require __DIR__.'/auth.php';

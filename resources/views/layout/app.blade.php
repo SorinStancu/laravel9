@@ -12,10 +12,7 @@
 
 <body>
 <div id="app">
-{{--    <message-component></message-component>--}}
-    <message></message>
-
-{{--    <message title="Hello World" body="Lorem ipsum dolor sit amet."></message>--}}
+    <example-component></example-component>
 </div>
 
 </body>
