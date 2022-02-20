@@ -218,12 +218,6 @@
 
                             @endforeach
 
-                            <div class="d-flex">
-                                <div class="mx-auto">
-                                    {{--            {{ $bannere->paginate() }}--}}
-                                </div>
-                            </div>
-
                         </div>
 
                     </div>
